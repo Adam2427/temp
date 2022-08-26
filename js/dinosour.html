@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .container {
+        height: 90vh;
+        padding-left: 10px;
+        border-bottom: 3px solid;
+        /* margin-bottom: 20px; */
+        display: flex;
+        align-items: flex-end;
+      }
+      img {
+        background-color: white;
+        height: 70px;
+        animation: run 5s 1s linear;
+      }
+      .jump {
+        transform: translateY(-300px);
+      }
+      .up {
+        align-items: center;
+      }
+      @keyframes run {
+        to {
+          transform: translate(1200px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="img/dino.png" alt="" />
+    </div>
+  </body>
+  <script>
+    document.querySelector("body").addEventListener("keyup", doJump);
+    function doJump(e) {
+      console.log(e.keyCode === 32);
+      if (e.keyCode === 32) {
+        // document.querySelector("img").classList.add("jump");
+        document.querySelector(".container").classList.add("up");
+        setTimeout(
+          () => document.querySelector(".container").classList.remove("up"),
+          300
+        );
+      }
+    }
+  </script>
+</html>

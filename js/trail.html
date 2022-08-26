@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .stars-container {
+        position: relative;
+        display: inline-block;
+        color: transparent;
+        font-size: 25px;
+        letter-spacing: 2px;
+      }
+      .stars-container:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "\2605\2605\2605\2605\2605";
+        color: #d0d0d0;
+      }
+      .stars-container:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "\2605\2605\2605\2605\2605";
+        color: #f8a824;
+        overflow: hidden;
+        /* width: 90%; */
+
+        transition: all 2.5s ease;
+        animation: star 2s forwards;
+        /* transform-origin: left; */
+      }
+      @keyframes star {
+        from {
+          width: 0%;
+        }
+      }
+      .stars-container.stars-98::after {
+        width: 90%;
+      }
+
+      .number {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      let i = 0;
+      let arr = [];
+      let st;
+
+      for (let i = 0.2; i < 4.9; i = i + 0.2) {
+        arr.push(i.toFixed(1));
+      }
+      console.log(arr);
+      st = setInterval(doCall, 70);
+      function doCall() {
+        if (i == arr.length - 1) {
+          clearInterval(st);
+        } else if (i < arr.length - 2) {
+          document.getElementById("text-1").innerHTML = arr[i];
+          document.getElementById("text-2").innerHTML = arr[i];
+          document.getElementById("text-3").innerHTML = arr[i];
+
+          document.getElementById("text-4").innerHTML = arr[i];
+          if (arr[i] >= 4.4) {
+            document.getElementById("text-1").innerHTML = 4.5;
+            document.getElementById("text-2").innerHTML = 4.5;
+            document.getElementById("text-3").innerHTML = 4.5;
+          }
+        }
+
+        document.getElementById("text").innerHTML = arr[i];
+
+        i++;
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- <span class="stars-container stars-98">★★★★★</span>
+    <span class="number" id="text"></span>
+    <p id="text-1"></p>
+    <p id="text-2"></p>
+    <p id="text-3"></p>
+
+    <p id="text-4"></p> -->
+  </body>
+</html>
+<!-- <script>
+  let i = 0;
+  let arr = [];
+  let st;
+
+  for (let i = 0.2; i < 4.9; i = i + 0.2) {
+    arr.push(i.toFixed(1));
+  }
+  console.log(arr);
+  st = setInterval(doCall, 100);
+  function doCall() {
+    if (i == arr.length - 1) {
+      clearInterval(st);
+    } else if (i < arr.length - 2) {
+      document.getElementById("text-1").innerHTML = arr[i];
+      document.getElementById("text-2").innerHTML = arr[i];
+      document.getElementById("text-3").innerHTML = arr[i];
+
+      document.getElementById("text-4").innerHTML = arr[i];
+      if (arr[i] >= 4.4) {
+        document.getElementById("text-1").innerHTML = 4.5;
+        document.getElementById("text-2").innerHTML = 4.5;
+        document.getElementById("text-3").innerHTML = 4.5;
+      }
+    }
+    //  else if (arr[i] >= 4.4) {
+    //   document.getElementById("text-1").innerHTML = 4.5;
+    // }
+
+    document.getElementById("text").innerHTML = arr[i];
+
+    i++;
+  }
+</script> -->

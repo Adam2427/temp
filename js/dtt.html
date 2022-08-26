@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: sans-serif;
+        /* margin-top: 20%; */
+        font-weight: 400;
+      }
+      .container {
+        position: relative;
+        margin-left: 100px;
+      }
+      .box {
+        visibility: hidden;
+        opacity: 0;
+        transition: all 1s ease;
+        /* transform: translate(50px); */
+        position: absolute;
+      }
+
+      .box-active {
+        visibility: visible;
+        opacity: 1;
+        transition: all 2s ease;
+        transform: translate(50px);
+        /* z-index: 11; */
+      }
+      .btn {
+        margin-left: 600px;
+      }
+      .btn--active {
+        background-color: coral;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box box-1 box-active">
+        <img src="img/1.jpg" alt="" />
+      </div>
+      <div class="box box-2">
+        <img src="img/2.jpg" alt="" />
+      </div>
+      <div class="box box-3">
+        <img src="img/3.jpg" alt="" />
+      </div>
+    </div>
+    <br />
+    <button id="btn-1" class="btn btn-1 btn--active">btn 1</button><br />
+    <button id="btn-2" class="btn btn-2">btn 2</button><br />
+    <button id="btn-3" class="btn btn-3">btn 3</button><br />
+  </body>
+  <script>
+    const btn = document.querySelectorAll(".btn");
+    // const btn1 = document.querySelector("#btn-1");
+    // const btn2 = document.querySelector("#btn-2");
+    // const btn3 = document.querySelector("#btn-3");
+
+    for (let i = 0; i < btn.length; i++) {
+      btn[i].addEventListener("click", () => {
+        // console.log(btn[i].textContent);
+        //img
+        document.querySelector(".box-1").classList.remove("box-active");
+        document.querySelector(".box-2").classList.remove("box-active");
+        document.querySelector(".box-3").classList.remove("box-active");
+        document.querySelector(`.box-${i + 1}`).classList.add("box-active");
+        //btn
+
+        btn[0].classList.remove("btn--active");
+        btn[1].classList.remove("btn--active");
+        btn[2].classList.remove("btn--active");
+        btn[i].classList.add("btn--active");
+      });
+    }
+  </script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>stopWatch</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stopWatch.css" />
+    <script src="stopWatch.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="display">
+        <span id="minute">00</span>
+        <span>:</span>
+        <span id="second">00</span>
+        <span>.</span>
+        <span id="millSec-1">0</span>
+        <span id="millSec-2">0</span>
+      </div>
+      <div class="display-list">
+        <p>Current timing</p>
+        <div class="displaylist-row"></div>
+      </div>
+      <button class="btn btn-stop">
+        <img class="stop" src="img/stop.png" alt="button stop" />
+      </button>
+      <button class="btn btn-flag">
+        <img class="flag" src="img/flag.png" alt="button flag" />
+      </button>
+      <button class="btn btn-play">
+        <img id="img" src="img/play.png" alt="button play and pause" />
+      </button>
+    </div>
+  </body>
+</html>

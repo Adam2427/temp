@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function doCall() {
+        for (var i = 0; i < 5; i++) {
+          setTimeout(() => {
+            console.log(i);
+          }, 1000);
+        }
+      }
+      doCall();
+      //let keyword == 0,1,2,3,4
+      // var keyword == 5,5,5,5,5
+
+      /*   //ex 1 create new array
+
+      let a = new Array(5); // or []
+      let b = [1, 2, 3, 4, 5];
+      let c = new Map();
+      let d = Array.from({ length: 5 }, (_, i) => i + 1);
+      console.log(d); //[1, 2, 3, 4, 5];
+      let e= Array.of(1,2,3);
+      
+      //////////////////
+
+      // EX 2  copy arr
+      let a = [1, 2, 3, 4, 5];
+      let b = a.slice();
+      console.log(b); //[1, 2, 3, 4, 5];
+      let c = [];
+      for (let i = 0; i < a.length; i++) {
+        // c.push(a[i]);  // or
+        c[i] = a[i];
+      }
+      console.log(c); //[1, 2, 3, 4, 5];
+      
+      //////////////////
+
+      // EX 3 HOW TO EMPTY
+      var array = [1, 2, 3, 4, 5];
+      // array=[];
+      // array.length = 0;  // []
+      // array.splice(0,array.length)
+      
+      while (array.length) {
+        array.pop();
+        }
+      console.log(array);// []
+     
+
+      ///////////////////////
+
+      // EX 6 Add an item to the end of an array
+      var array = [1, 2, 3, 4, 5];
+      array.push(6); //  [1, 2, 3, 4, 5,6];
+      array[array.length] = 7; //[1, 2, 3, 4, 5, 6, 7];
+      array.splice(array.length, 0, 8); //[1, 2, 3, 4, 5, 6, 7, 8]
+      console.log(array);
+      
+      ///////////////////////
+
+      // EX 07 Find the index position of d in this array
+      var arr = ["a", "b", "c", "d"];
+      console.log(arr[arr.length - 1]); //d
+      console.log(arr.at(-1)); //d
+      console.log(arr.slice(-1)[0]); //d 
+
+      ////////////////////////////
+
+      // flat array
+      let arr = [
+        [1, 2],
+        [3, 4],
+        [5, [6, 7], 8],
+        [9, 0],
+      ];
+      // console.log(arr.flat(2)); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+      // let result = arr.reduce((a, b) => a.concat(b), []);
+      // console.log(result); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+      let res = arr.flatMap((ar) => ar);
+      console.log(res);
+      function flatten(arr) {
+  return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);}
+  */
+
+      ////////////////////////////////////////////
+    </script>
+  </head>
+  <body></body>
+</html>

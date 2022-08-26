@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return doValid()">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="test.js"></script>
+    <script>
+      function doCall() {
+        console.log("dd");
+      }
+      function doValid() {
+        // alert("Invalid Data");
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <form action="#" onsubmit="return doValid()" method="get">
+      <input onselect="doCall()" value="sss" type="text" />
+      <button type="submit"></button>
+    </form>
+  </body>
+</html>

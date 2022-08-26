@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My WebSite</title>
+    <style>
+      .img {
+        width: 100px;
+        height: 100px;
+
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="id1" type="text" /><br /><br />
+    <!-- <input id="id2" type="text" /><br /><br /> -->
+    <button onclick="doCal('push')">push</button>
+    <button onclick="doCal('pop')">pop</button>
+    <button onclick="doCal('shift')">shift</button>
+    <button onclick="doCal('unshift')">unshift</button><br />
+    <span id="res"></span><br />
+
+    <div id="edit" class="cont">
+      <input id="edit1" type="text" /><br /><br />
+      <button onclick="doUpdate()">Update</button>
+    </div>
+    <!-- <span id="res">hi,89,hello,Good,100,Morning,67</span><br /><br />
+
+    <button onclick="doCall()">num&str</button>
+     <button onclick="doCall()">click</button> -->
+
+    <!-- <span id="res"></span>
+    <input onclick="doCal()" type="checkbox" name="" id="ck" />
+
+     <input onblur="doCall()" id="id1" type="text" /><br /><br />
+    <input type="text" />
+    <img class="img" src="img/1.jpg" alt="" />
+    <img class="img" src="img/2.jpg" alt="" />
+    <img class="img" src="img/3.jpg" alt="" />
+    <button onclick="doCal()">Zoom in</button>
+    <button>out</button>
+    <img id="imgBig" src="" alt="" />-->
+  </body>
+  <script>
+    var i;
+    let edit = document.getElementById("edit");
+    edit.style.display = "none";
+    let arr = ["arun", "kumar", "gopi", "guru"];
+    function doCal(calc) {
+      let val1 = document.getElementById("id1").value;
+      switch (calc) {
+        case "push": {
+          arr.push(val1);
+          break;
+        }
+        case "pop": {
+          arr.pop(val1);
+          break;
+        }
+        case "unshift": {
+          arr.unshift(val1);
+          break;
+        }
+        case "shift": {
+          arr.shift(val1);
+          break;
+        }
+      }
+      let result = "<ul>";
+      for (i = 0; i < arr.length; i++) {
+        result += `<li> ${arr[i]}<button onclick=doEdit(${i})>Edit</button>
+          <button onclick=doDelete(${i})>Delete</button> </li>`;
+      }
+      result += "<ul/>";
+      document.getElementById("res").innerHTML = result;
+    }
+    function doEdit(i) {
+      window.index = i;
+      edit.style.display = "block";
+      document.getElementById("edit1").value = arr[i];
+      window.index = i;
+      console.log(i);
+    }
+    function doDelete(i) {
+      console.log(i);
+      arr.splice(i, 1);
+      doCal();
+    }
+    function doUpdate() {
+      console.log(index);
+      let editVal = document.getElementById("edit1").value;
+      arr.splice(index, 1, editVal);
+      edit.style.display = "none";
+      doCal();
+    }
+    doCal();
+    /*    function doCal() {
+      let val1 = document.getElementById("id1").value;
+      let val2 = document.getElementById("id2").value;
+      let result =
+        val1 == "admin" && val2 == "admin"
+          ? (window.location.href = "count.html")
+          : "Invalid Data";
+      document.getElementById("res").innerHTML = result;
+    }
+     let title = document.title;
+    let i = 0;
+    var st;
+    let sum = "";
+    st = setInterval(doCal, 1000);
+    function doCal() {
+      if (title.length - 1 == i) {
+        clearInterval(st);
+      }
+      document.getElementById("res").innerHTML += title[i];
+      i++;
+    }
+
+   
+    let arr = ["hi", 89, "hello", "Good", 100, "Morning", 67];
+    let tempArr = [];
+    function doCall() {
+      let result = arr.filter((val) => {
+        if (typeof val === "string") {
+          return val;
+        } else {
+          tempArr.push(val);
+        }
+      });
+      document.getElementById("res").innerHTML =
+        "String =" + result + "<br>Number=" + tempArr;
+    }
+   let str = "hi Gopi, how are you gopi? hello gopi what happened gopi?";
+    function doCall() {
+      let val1 = document.getElementById("id1").value;
+      let val2 = document.getElementById("id2").value;
+      let result = str.replace(new RegExp(val1, "ig"), val2);
+      document.getElementById("res").innerHTML = result;
+    }
+   let imgs = document.querySelectorAll(".img");
+    // let i = 0; i < imgs.length; i++
+    imgs.forEach((img, i) => {
+      img.addEventListener("mouseover", () => {
+        document.getElementById("imgBig").src = imgs[i].src;
+      });
+    });
+    
+    function doCal() {
+      let img = document.getElementById("img");
+      console.log(img.src);
+    }
+    let arr = ["vijay", "Ajith", "vikram", "Suriya"];
+    function doCall() {
+      let value = document.getElementById("id1").value;
+      // let result = arr.some((val) => val.includes(value));
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i].toLowerCase().includes(value));
+        if (arr[i].toLowerCase().includes(value.toLowerCase())) {
+          result = "already taken";
+          break;
+        } else {
+          result = "congrats";
+        }
+      }
+      console.log(result);
+      document.getElementById("result").innerHTML = result;
+      // ? "already taken"
+      // : "congrats";
+    }
+    document.getElementById("res").innerHTML = arr;
+    
+    let arr = [34, 45, 56, 34, 23, 11, 66, 77, 88, 99];
+    function doCall() {
+      let value = Number(document.getElementById("id1").value);
+
+      let result = arr.map(
+        (val) => (val + value > 100 ? (val = 100) : val + value)
+     
+      );
+
+      document.getElementById("res").innerHTML = result;
+      // console.log(result);
+    }
+    document.getElementById("res").innerHTML = arr;
+    let arr = [34, 45, 56, 34, 23, 11, 66, 77, 88, 99];
+    function doCal() {
+      let val = document.getElementById("ck");
+      console.log(val.checked);
+      if (val.checked) {
+        let result = arr.filter((val) => val > 60);
+
+        document.getElementById("res").innerHTML = result;
+      } else {
+        document.getElementById("res").innerHTML = arr;
+      }
+    }
+    document.getElementById("res").innerHTML = arr;
+
+    function doCall() {
+      let val = document.getElementById("id1");
+      // val.value = val.value.toUpperCase();
+      val.value = val.value.trim();
+    }
+
+    function doCal() {
+      let img = document.querySelector("img");
+      let ht = img.clientHeight;
+      let wd = img.clientWidth;
+      img.style.height = ht + 50 + "px";
+      // img.width = wd + 50 + "px";
+      console.log(img.clientHeight);
+    }*/
+  </script>
+</html>

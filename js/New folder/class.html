@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class DailyWishes {
+        constructor(name, msg) {
+          this.name = name;
+          this.msg = msg;
+        }
+        doWhises() {
+          console.log(`${this.msg} ${this.name}`);
+        }
+      }
+      // const dw = new DailyWishes("Jonas", "Good Morning");
+      // dw.doWhises();
+
+      class FestivalWishes extends DailyWishes {
+        constructor(ftwish) {
+          super("smith", "good Morning");
+          this.ftwish = ftwish;
+        }
+        festivalWish() {
+          if (this.ftwish) {
+            super.doWhises();
+            console.log(`today ${this.ftwish}`);
+          } else {
+            super.doWhises();
+          }
+        }
+      }
+      const fw = new FestivalWishes("happy New Year");
+      fw.festivalWish();
+      /* class Person {
+        constructor(name, year) {
+          this.name = name;
+          this.year = year;
+        }
+        details() {
+          console.log(`${this.name} ${this.year}`);
+        }
+        calAge() {
+          console.log(`${this.name} is  ${2022 - this.year} years old`);
+        }
+      }
+      const p1 = new Person("jonas", 1991);
+      const p2 = new Person("davis", 2004);
+      p1.calAge();
+      p2.calAge();
+      */
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        font-family: "Roboto", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        margin: 10px 0;
+        width: 300px;
+        height: 96vh;
+        /* border: 1px solid; */
+        font-size: 52px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+      }
+      .display {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+      }
+      .btn {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 45px;
+        height: 45px;
+
+        box-shadow: 0 0px 15px rgb(0 0 0 / 10%);
+        border-radius: 50%;
+        position: absolute;
+        bottom: 15px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: rgb(244, 248, 242);
+      }
+      .btn-stop,
+      .btn-flag {
+        transform: translateX(-100%);
+        display: none;
+      }
+      .stop {
+        width: 15px;
+        height: 15px;
+      }
+      .flag {
+        width: 20px;
+        height: 20px;
+        transform: translateX(0.5px);
+      }
+      #img {
+        width: 35px;
+        height: 35px;
+        transform: translateX(0.5px);
+      }
+
+      .move {
+        transform: translateX(100%);
+      }
+      .display-flag {
+        font-size: 38px;
+        position: absolute;
+        top: 15%;
+        left: -10%;
+      }
+      .display-list {
+        /* width: 100%;
+
+        display: none;
+        margin-top: -50%; */
+        width: 100%;
+        height: 280px;
+        display: none;
+        margin-top: -50%;
+        /* overflow-y: scroll; */
+        bottom: 28%;
+        position: absolute;
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      .display-list span {
+        padding: 15px 0;
+        font-size: 16px;
+        color: #969191;
+      }
+      .result--row {
+        /* border-top: 1px dotted #e5e5e5; */
+        display: flex;
+        justify-content: space-around;
+      }
+      .display-list p {
+        font-size: 13px;
+        color: #beb4b4;
+        margin-left: 11%;
+        margin-bottom: 20px;
+      }
+      .flag-grey {
+        width: 15px;
+        height: 15px;
+        opacity: 0.5;
+      }
+      .font-clr {
+        color: #000 !important;
+      }
+      .displaylist-row {
+        overflow-y: scroll;
+        height: 90%;
+        border-top: 1px dotted #e5e5e5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="display">
+        <span id="minute">00</span> <span>:</span> <span id="second">00</span>
+        <span>.</span>
+        <span id="millSec-1">0</span>
+        <span id="millSec-2">0</span>
+      </div>
+      <div class="display-list">
+        <p>Current timing</p>
+        <div class="displaylist-row"></div>
+      </div>
+      <button class="btn btn-stop">
+        <img class="stop" src="img/stop.png" alt="" />
+      </button>
+      <button class="btn btn-flag">
+        <img class="flag" src="img/flag.png" alt="" />
+      </button>
+      <button class="btn btn-play">
+        <img id="img" src="img/play.png" alt="" />
+      </button>
+    </div>
+  </body>
+  <script>
+    let minute = document.getElementById("minute");
+    let seconds = document.getElementById("second");
+    let millSec1 = document.getElementById("millSec-1");
+    let millSec2 = document.getElementById("millSec-2");
+    var stMillSec2;
+    let msec2 = 0;
+    let msec1 = 0;
+    let sec = 1;
+    let mint = 0;
+    let start = false;
+    let btnPlay = document.querySelector(".btn-play");
+    let btnStop = document.querySelector(".btn-stop");
+    let btnFlag = document.querySelector(".btn-flag");
+    let arr = [];
+    let totalArr = [];
+    let total;
+    let d = 0;
+    //start and stop the stopWatch function
+
+    btnPlay.addEventListener("click", () => {
+      start = !start;
+
+      if (start) {
+        btnFlag.style.display = "block";
+        btnPlay.classList.add("move");
+        document.getElementById("img").src = "img/pause.png";
+        stMillSec2 = setInterval(doMillSec2, 10);
+      } else if (!start) {
+        btnStop.style.display = "block";
+        btnFlag.style.display = "none";
+
+        doClearInterval();
+      }
+    });
+
+    // to clear or stop or hold the stopwatch function
+
+    function doClearInterval() {
+      document.getElementById("img").src = "img/play.png";
+      clearInterval(stMillSec2);
+    }
+    function doMillSec2() {
+      msec2 >= 10 ? (doMillSec1(), (msec2 = 0)) : msec2;
+
+      millSec2.innerHTML = msec2;
+      msec2++;
+    }
+    function doMillSec1() {
+      msec1 >= 10 ? (doSeconds(), (msec1 = 0)) : msec1;
+
+      millSec1.innerHTML = msec1;
+      msec1++;
+    }
+    function doSeconds() {
+      if (sec >= 60) {
+        mint++;
+        minute.innerHTML = String(mint).padStart(2, "0");
+
+        sec = 0;
+      }
+
+      seconds.innerHTML = String(sec).padStart(2, "0");
+      sec++;
+    }
+
+    //btn stop to reset the stopwatch function
+
+    btnStop.addEventListener("click", () => {
+      btnStop.style.display = "none";
+      btnPlay.classList.remove("move");
+      msec1 = msec2 = mint = 0;
+
+      sec = 1;
+      millSec2.innerHTML = millSec1.innerHTML = 0;
+      minute.innerHTML = seconds.innerHTML = "00";
+      doClearInterval();
+      document.querySelector(".displaylist-row").innerHTML = " ";
+      d = 0;
+      arr = [];
+      totalArr = [];
+      document.querySelector(".display").classList.remove("display-flag");
+      document.querySelector(".display-list").style.display = "none";
+      // console.log(document.querySelector(".displaylist-row").innerHTML);
+    });
+
+    //To flag the current timing
+
+    btnFlag.addEventListener("click", doFlag);
+
+    function doFlag() {
+      document.querySelector(".display").classList.add("display-flag");
+      document.querySelector(".display-list").style.display = "block";
+      let result = `${String(mint).padStart(2, "0")}:${String(sec).padStart(
+        2,
+        "0"
+      )}:${msec1 == 10 ? 0 : msec1}${msec2 == 10 ? 0 : msec2}  `;
+      // let result = `${mint}:${sec}:${msec1}:${msec2}`;
+      arr.push(result);
+      if (arr.length >= 2) {
+        let [i, j, k] = arr.at(-1).split(":");
+        let [i1, j1, k1] = arr.at(-2).split(":");
+        total = [
+          String(i - i1).padStart(2, "0"),
+          String(j - j1).padStart(2, "0"),
+          String(k - k1).padStart(2, "0"),
+        ]
+
+          .join(":")
+          .replace(/-/g, "");
+        totalArr.push(total);
+
+        console.log(total);
+      }
+
+      html = ` <div class="result--row">
+       
+          
+           <span> <img class='flag-grey' src='img/flag-grey.png'>${(
+             d +
+             1 +
+             ""
+           ).padStart(2, "0")}</span>
+
+           <span>+ ${totalArr.length >= 1 ? totalArr[d - 1] : arr[0]}</span>
+          <span class='font-clr'>${arr[d]}</span>
+        </div>`;
+
+      document
+        .querySelector(".displaylist-row")
+        .insertAdjacentHTML("afterbegin", html);
+      d++;
+
+      // document.querySelector("#res").innerHTML = `${arr.length}   ${arr}`;
+    }
+  </script>
+</html>

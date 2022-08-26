@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //ARRAY METHODS
+
+      // CONCAT
+      /*
+                 let a = [1, 2, 3];
+                 let b = [4, 5, 6];
+                 let x = ["arun", "bala"];
+                 let c = a.concat(b); //  [1, 2, 3, 4, 5, 6]
+                 console.log(a.concat(b)); //[1, 2, 3, 4, 5, 6]
+                 console.log(c.concat(x)); //[1, 2, 3, 4, 5, 6, 'arun', 'bala'];
+
+                 // PUSH
+
+                 let arr = ["arun", "bala", "charan"];
+                 arr.push("kumar");
+                 console.log(arr); //['arun', 'bala', 'charan', 'kumar']
+                 arr.push("kumar");
+                 console.log(arr); // ['arun', 'bala', 'charan', 'kumar', 'kumar'];
+
+                 // POP
+
+                 let arr = ["arun", "bala", "charan"];
+                 arr.pop();
+                 console.log(arr);  //['arun', 'bala']
+                 arr.pop();
+                 console.log(arr);  //['arun']
+                 arr.pop();
+                 console.log(arr);  //[]
+                 arr.push("ajith"); //['ajith']
+                 arr.push("arun");
+                 console.log(arr);  //['ajith'.'arun']
+
+
+                 // UNSHIFT
+
+                 let arr = ["arun", "bala", "charan"];
+
+                 arr.unshift("Ajith");
+                 console.log(arr); // ['Ajith', 'arun', 'bala', 'charan'];
+                 arr.unshift("thiru");
+                 console.log(arr); //  ['thiru','Ajith', 'arun', 'bala', 'charan'];
+
+           // SHIFT
+           let arr = ["Ajith", "arun", "bala", "charan"];
+           arr.shift(); //
+           console.log(arr); //['arun', 'bala', 'charan']
+
+           //practice
+           arr.push("vicky");
+           arr.push("vijay"); //['arun', 'bala', 'charan','vicky','vijay']
+           arr.pop();
+           arr.shift();  ////[ 'bala', 'charan','vicky']
+           arr.unshift("ajith");
+           arr.push("ajith"); ////['ajith', 'bala', 'charan','vicky','ajith']
+           arr.pop();
+           arr.shift();
+           console.log(arr); ////['bala', 'charan','vicky']
+
+
+           //////////////////////////////////////////////////////
+           //////////////////////////////////////////////////////
+
+
+           // REVERSE METHOD
+
+           let arr = [1, 2, 3, 4, 5, 6];
+           arr.reverse();
+           console.log(arr); // [6, 5, 4, 3, 2, 1]
+
+           let arr1 = ["A", "B", "C", "D"];
+           arr1.reverse();
+           console.log(arr1); //['D', 'C', 'B', 'A']
+
+           let arr2 = ["thiru", "Ajith", "arun", "bala", "charan", "abc"];
+           arr2.reverse();
+           console.log(arr2);  // ['abc', 'charan', 'bala', 'arun', 'Ajith', 'thiru'];
+
+      
+
+      // SPLIT
+
+      // STRING TO ARRAY  =========>   SPLIT METHOD
+      // "ARUN" => ['A','R','U','N'];
+      // 12345  => String(12345)
+
+      let a = 1234567890;
+
+      console.log(String(a).split()); //['1234567890']
+
+      console.log(String(a).split("")); //['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+
+      let str = "name:vicky,age:45,gender:Male,city:Kalambur";
+
+      console.log(str.split(",")); //['name:vicky', 'age:45', 'gender:Male', 'city:Kalambur']
+
+      console.log(str.split(":")); //['name', 'vicky,age', '45,gender', 'Male,city', 'Kalambur']
+      */
+
+      // ARRAY TO STRING  ==========>  JOIN METHOD
+      // ['A','R','U','N'] =>   "ARUN";
+
+      let arr = [1, 2, 3, 4, 5, 6];
+      console.log(arr.join()); // 1,2,3,4,5,6 type string
+      console.log(arr.join("")); // 12345 type string
+
+      let arr1 = ["Hello", "Good", "Morning"];
+      console.log(arr1.join("")); // HelloGoodMorning
+      console.log(arr1.join()); // Hello,Good,Morning
+      console.log(arr1.join(" - ")); // Hello - Good - Morning
+
+      //slice,splice,map,filter,foreach,sort,some,every,find,reduce,flat
+
+      // let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+      // console.log(str.split("").reverse().join("")); //ZYXWVUTSRQPONMLKJIHGFEDCBA
+    </script>
+  </head>
+  <body></body>
+</html>

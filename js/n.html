@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .img-active {
+        transform: translate(0, 0);
+        transition: all 2s ease;
+        animation: img 2s ease;
+      }
+      img {
+        transform: translate(10%);
+      }
+
+      .bn:focus,
+      .btn--active {
+        background-color: chocolate;
+      }
+    </style>
+  </head>
+  <body>
+    <div><img id="img" src="img/1.jpg" alt="" /></div>
+    <button class="btn btn-1 btn--active">btn 1</button><br />
+    <button class="btn btn-2">btn 2</button><br />
+    <button class="btn btn-3">btn 3</button><br />
+  </body>
+  <script>
+    const anim = function () {
+      document.getElementById("img").classList.add("img");
+    };
+    const btn = document.querySelectorAll(".btn");
+
+    for (let i = 0; i < btn.length; i++) {
+      btn[i].addEventListener("click", () => {
+        console.log(btn[i].textContent);
+        btn[0].classList.remove("btn--active");
+        btn[1].classList.remove("btn--active");
+        btn[2].classList.remove("btn--active");
+        btn[i].classList.add("btn--active");
+        document.querySelector("#img").classList.add("img-active");
+        document.getElementById("img").src = `img/${i + 1}.jpg`;
+      });
+    }
+  </script>
+</html>

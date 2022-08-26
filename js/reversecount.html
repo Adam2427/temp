@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>countdown</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 62.5%;
+      }
+      span {
+        font-size: 12rem;
+        color: #212529;
+      }
+      span:nth-child(even) {
+        vertical-align: 10px;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span id="hour">02</span>
+      <span>:</span>
+      <span id="minute">19</span>
+      <span>:</span>
+      <span id="seconds">00</span>
+    </div>
+  </body>
+  <script>
+    let i = 19;
+    let j = 18;
+    let k = 2;
+    let st;
+
+    let minute = document.getElementById("minute");
+    let seconds = document.getElementById("seconds");
+    let hour = document.getElementById("hour");
+
+    st = setInterval(doStart, 10);
+    function doStart() {
+      if (i < 0) {
+        if (j < 0) {
+          j = 19;
+          k--;
+          if (k < 0) {
+            clearInterval(st);
+            setTimeout(doStop, 100);
+          } else {
+            hour.textContent = String(k).padStart(2, "0");
+          }
+        }
+
+        minute.textContent = String(j).padStart(2, "0");
+        j--;
+        i = 19;
+      }
+
+      seconds.textContent = String(i).padStart(2, "0");
+
+      i--;
+    }
+
+    function doStop() {
+      hour.textContent = "00";
+      minute.textContent = "00";
+      seconds.textContent = "00";
+    }
+    // clearInterval(st);
+  </script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div class="buttons">
+      <button id="black">black</button>
+      <button id="white">white</button>
+      <button id="blue">blue</button>
+      <button id="red">red</button>
+      <button id="yellow">yellow</button>
+    </div> -->
+    <div class="buttons">
+      <button onclick="doColor(this)" id="black">black</button>
+      <button onclick="doColor(this)" id="white">white</button>
+      <button onclick="doColor(this)" id="blue">blue</button>
+      <button onclick="doColor(this)" id="red">red</button>
+      <button onclick="doColor(this)" id="yellow">yellow</button>
+    </div>
+  </body>
+  <script>
+    function doColor(value) {
+      document.querySelector("body").style.backgroundColor = `${value.id}`;
+    }
+
+    // let buttons = document.querySelectorAll("button");
+
+    // for (let i = 0; i < buttons.length; i++) {
+    //   buttons[i].addEventListener("click", () => {
+    //     console.log(buttons[i].id);
+    //     document.querySelector(
+    //       "body"
+    //     ).style.backgroundColor = `${buttons[i].id}`;
+    //   });
+    // }
+  </script>
+</html>
